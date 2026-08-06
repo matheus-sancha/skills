@@ -1,0 +1,10 @@
+# Skills are read by agents on Linux, macOS and Windows from a single checkout.
+# Pin LF everywhere so a CRLF checkout can't make every line of every SKILL.md
+# look modified.
+* text=auto eol=lf
+
+# Shell scripts must stay LF or bash refuses to run them.
+*.sh text eol=lf
+
+# PowerShell is happy with either; keep it consistent with the rest.
+*.ps1 text eol=lf

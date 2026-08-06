@@ -26,7 +26,7 @@ echo "────────────────────────�
 existing_categories=()
 while IFS= read -r -d '' d; do
   existing_categories+=("$(basename "$d")")
-done < <(find "$SKILLS_ROOT" -maxdepth 1 -mindepth 1 -type d -not -name 'example-skill' -print0 2>/dev/null | sort -z)
+done < <(find "$SKILLS_ROOT" -maxdepth 1 -mindepth 1 -type d -print0 2>/dev/null | sort -z)
 
 if [[ ${#existing_categories[@]} -gt 0 ]]; then
   echo "Existing categories: ${existing_categories[*]}"

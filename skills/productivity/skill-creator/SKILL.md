@@ -1,7 +1,6 @@
 ---
 name: skill-creator
-description: Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
-disable-model-invocation: true
+description: Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable. Use whenever authoring, editing, or reviewing a SKILL.md, or deciding a skill's trigger description, invocation mode, or file structure.
 ---
 
 A skill exists to wrangle determinism out of a stochastic system. **Predictability** — the agent taking the same _process_ every run, not producing the same output — is the root virtue; every lever below serves it.

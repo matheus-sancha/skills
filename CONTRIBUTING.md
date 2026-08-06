@@ -18,7 +18,16 @@ skills/
         └── SKILL.md
 ```
 
-Current categories: `engineering`, `productivity`. Add a new category directory if your skill doesn't fit either.
+Current categories: `engineering`, `productivity`, `vendor`. Add a new category directory if your skill doesn't fit.
+
+`vendor/` holds third-party skills copied in rather than authored here — see
+[skills/vendor/README.md](./skills/vendor/README.md) before editing anything in it.
+
+Two directories are deliberately **outside** `skills/`, because everything under
+`skills/` gets installed as a live skill:
+
+- `templates/` — starting points to copy, not skills to run.
+- `docs/` — guidance for humans writing skills.
 
 ## Skill format
 
@@ -62,7 +71,8 @@ Prompts for a category, name, and description, then creates the directory and `S
 
 | Script | Purpose |
 |---|---|
-| `scripts/link-skills.sh` | Symlink all skills into `~/.claude/skills` and `~/.agents/skills` |
+| `scripts/link-skills.ps1` | **Windows** — symlink all skills into `~/.claude/skills` and `~/.agents/skills`. Supports `-DryRun` |
+| `scripts/link-skills.sh` | **macOS/Linux** — same, via `ln -s`. On Windows it silently *copies*; use the `.ps1` instead |
 | `scripts/list-skills.sh` | List all `SKILL.md` paths in the repo |
 | `scripts/new-skill.sh` | Scaffold a new skill interactively |
 | `scripts/validate.sh` | Validate all `SKILL.md` files for required fields |
