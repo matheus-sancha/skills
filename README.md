@@ -43,11 +43,14 @@ invoked by the model when the context matches.
 | Skill | Description |
 |---|---|
 | [codebase-design](./skills/engineering/codebase-design/) | Shared vocabulary for designing deep modules — use when designing or restructuring a module's interface |
+| [context-map](./skills/engineering/context-map/) | Create and maintain `CONTEXT.md` and ADRs — the mental model and the record of why |
 | [diagnosing-bugs](./skills/engineering/diagnosing-bugs/) | Diagnosis discipline for hard bugs — build a tight, red-capable feedback loop before hypothesising |
+| [domain-modeling](./skills/engineering/domain-modeling/) | Pin down entities, relationships, and invariants; lock one ubiquitous language |
 | [flutter-desktop-app](./skills/engineering/flutter-desktop-app/) | Blueprint for a local-first Flutter app shipped as a plain Windows zip |
 | [lean-code-reviewer](./skills/engineering/lean-code-reviewer/) | Review a codebase for waste, redundancy, and AI slop |
 | [prototype](./skills/engineering/prototype/) | Build a throwaway prototype to flesh out a design (logic terminal app or UI variations) |
 | [review-changes](./skills/engineering/review-changes/) | Review a diff on two axes — repo standards, and fidelity to the originating spec |
+| [test-strategy](./skills/engineering/test-strategy/) | Decide what deserves a test and which seam to write it at |
 
 ### Productivity
 
@@ -56,6 +59,7 @@ invoked by the model when the context matches.
 | [handoff](./skills/productivity/handoff/) | `slash-only` — compact the current conversation into a handoff document for another agent |
 | [project-reviewer](./skills/productivity/project-reviewer/) | Interview the user relentlessly about a plan or design to stress-test it |
 | [research](./skills/productivity/research/) | Investigate a question against primary sources, captured as a cited Markdown file |
+| [resume](./skills/productivity/resume/) | `slash-only` — pick up from a handoff document, checking what drifted since it was written |
 | [skill-creator](./skills/productivity/skill-creator/) | Reference for writing and editing skills well — vocabulary and principles for predictable skills |
 | [teach](./skills/productivity/teach/) | `slash-only` — teach the user a new skill or concept across multiple sessions |
 | [wayfinder](./skills/productivity/wayfinder/) | `slash-only` — plan work too big for one session as a map of tickets on GitHub Issues |
@@ -88,15 +92,19 @@ skills/
 ├── skills/
 │   ├── engineering/
 │   │   ├── codebase-design/
+│   │   ├── context-map/
 │   │   ├── diagnosing-bugs/
+│   │   ├── domain-modeling/
 │   │   ├── flutter-desktop-app/
 │   │   ├── lean-code-reviewer/
 │   │   ├── prototype/
-│   │   └── review-changes/
+│   │   ├── review-changes/
+│   │   └── test-strategy/
 │   ├── productivity/
 │   │   ├── handoff/
 │   │   ├── project-reviewer/
 │   │   ├── research/
+│   │   ├── resume/
 │   │   ├── skill-creator/
 │   │   ├── teach/
 │   │   └── wayfinder/
