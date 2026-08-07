@@ -43,9 +43,11 @@ invoked by the model when the context matches.
 | Skill | Description |
 |---|---|
 | [codebase-design](./skills/engineering/codebase-design/) | Shared vocabulary for designing deep modules — use when designing or restructuring a module's interface |
+| [diagnosing-bugs](./skills/engineering/diagnosing-bugs/) | Diagnosis discipline for hard bugs — build a tight, red-capable feedback loop before hypothesising |
 | [flutter-desktop-app](./skills/engineering/flutter-desktop-app/) | Blueprint for a local-first Flutter app shipped as a plain Windows zip |
 | [lean-code-reviewer](./skills/engineering/lean-code-reviewer/) | Review a codebase for waste, redundancy, and AI slop |
 | [prototype](./skills/engineering/prototype/) | Build a throwaway prototype to flesh out a design (logic terminal app or UI variations) |
+| [review-changes](./skills/engineering/review-changes/) | Review a diff on two axes — repo standards, and fidelity to the originating spec |
 
 ### Productivity
 
@@ -53,8 +55,18 @@ invoked by the model when the context matches.
 |---|---|
 | [handoff](./skills/productivity/handoff/) | `slash-only` — compact the current conversation into a handoff document for another agent |
 | [project-reviewer](./skills/productivity/project-reviewer/) | Interview the user relentlessly about a plan or design to stress-test it |
+| [research](./skills/productivity/research/) | Investigate a question against primary sources, captured as a cited Markdown file |
 | [skill-creator](./skills/productivity/skill-creator/) | Reference for writing and editing skills well — vocabulary and principles for predictable skills |
 | [teach](./skills/productivity/teach/) | `slash-only` — teach the user a new skill or concept across multiple sessions |
+| [wayfinder](./skills/productivity/wayfinder/) | `slash-only` — plan work too big for one session as a map of tickets on GitHub Issues |
+
+Three review skills exist and the boundary between them is **scope**:
+`review-changes` reviews a diff, `lean-code-reviewer` reviews a whole codebase,
+and the built-in `/code-review` hunts bugs.
+
+`diagnosing-bugs`, `research`, `review-changes`, and `wayfinder` are adapted
+from [Matt Pocock's skills](https://github.com/mattpocock), rewritten to depend
+only on skills in this repo and to target GitHub Issues directly.
 
 ### Vendor
 
@@ -76,14 +88,18 @@ skills/
 ├── skills/
 │   ├── engineering/
 │   │   ├── codebase-design/
+│   │   ├── diagnosing-bugs/
 │   │   ├── flutter-desktop-app/
 │   │   ├── lean-code-reviewer/
-│   │   └── prototype/
+│   │   ├── prototype/
+│   │   └── review-changes/
 │   ├── productivity/
 │   │   ├── handoff/
 │   │   ├── project-reviewer/
+│   │   ├── research/
 │   │   ├── skill-creator/
-│   │   └── teach/
+│   │   ├── teach/
+│   │   └── wayfinder/
 │   └── vendor/               ← third-party, minimally edited
 │       ├── building-native-ui/
 │       └── find-skills/
