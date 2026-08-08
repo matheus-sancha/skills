@@ -47,6 +47,7 @@ invoked by the model when the context matches.
 | [diagnosing-bugs](./skills/engineering/diagnosing-bugs/) | Diagnosis discipline for hard bugs — build a tight, red-capable feedback loop before hypothesising |
 | [domain-modeling](./skills/engineering/domain-modeling/) | Pin down entities, relationships, and invariants; lock one ubiquitous language |
 | [flutter-desktop-app](./skills/engineering/flutter-desktop-app/) | Blueprint for a local-first Flutter app shipped as a plain Windows zip |
+| [flutter-ui-design](./skills/engineering/flutter-ui-design/) | Design and audit beautiful, adaptive Flutter UI — tokens, M3 anti-defaults, proportions, navigation, app flow |
 | [lean-code-reviewer](./skills/engineering/lean-code-reviewer/) | Review a codebase for waste, redundancy, and AI slop |
 | [prototype](./skills/engineering/prototype/) | Build a throwaway prototype to flesh out a design (logic terminal app or UI variations) |
 | [review-changes](./skills/engineering/review-changes/) | Review a diff on two axes — repo standards, and fidelity to the originating spec |
@@ -96,6 +97,7 @@ skills/
 │   │   ├── diagnosing-bugs/
 │   │   ├── domain-modeling/
 │   │   ├── flutter-desktop-app/
+│   │   ├── flutter-ui-design/
 │   │   ├── lean-code-reviewer/
 │   │   ├── prototype/
 │   │   ├── review-changes/
