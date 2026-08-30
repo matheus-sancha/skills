@@ -36,7 +36,7 @@ The answer isn't part of the ticket body — it's recorded on resolution (see [W
 
 ## Ticket Types
 
-Every ticket is either **HITL** — human in the loop, worked *with* a human who speaks for themselves — or **AFK**, driven by the agent alone. A HITL ticket only resolves through that live exchange; the agent never stands in for the human's side of it (a grilling agent that answers its own questions has broken this).
+Every ticket is either **HITL** — human in the loop, worked *with* a human who speaks for themselves — or **AFK**, driven by the agent alone. A HITL ticket only resolves through that live exchange; the agent never stands in for the human's side of it (a grilling agent that answers its own questions has broken this). For that reason a HITL ticket is worked in the **main session**, never delegated to a subagent: a subagent has no channel to the human, so its questions have nowhere to surface and answering them itself is the only way it can finish.
 
 - **Research** (AFK): Reading documentation, third-party APIs, or local resources like knowledge bases. Use `/research`, which creates a markdown summary; link it as an asset. Use when knowledge outside the current working directory is required.
 - **Prototype** (HITL): Raise the fidelity of the discussion by making a cheap, rough, concrete artifact to react to — an outline, a rough take, a stub, or UI/logic code via `/prototype`. Links the prototype as an asset. Use when "how should it look" or "how should it behave" is the key question.
