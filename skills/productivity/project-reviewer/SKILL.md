@@ -3,7 +3,7 @@ name: project-reviewer
 description: Interview the user relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, or uses any 'grill' trigger phrases.
 ---
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one.
+Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one — depth-first, until the branch is exhausted. That is the default; see [Breadth-first mode](#breadth-first-mode) for the exception.
 
 If a question can be answered by exploring the codebase, explore the codebase instead. Only ask what the code cannot answer.
 
@@ -38,6 +38,20 @@ Question: "Where should sync conflicts be resolved?"
 | Merge on read | No data loss; every reader pays merge cost | merge function sketch |
 | Prompt the user | Never guesses; blocks background sync | ASCII conflict dialog |
 
+## Breadth-first mode
+
+Sometimes the goal is not to settle a decision but to find out **what the decisions are** — mapping a space before committing to any part of it. A caller asks for this explicitly ("breadth-first", "map the space", "what do we need to decide?"); wayfinder's *Map the frontier* step is the usual caller.
+
+The mechanics above are unchanged — one question at a time, 3-4 options, recommendation first, `description` and `preview` on each. What changes is the movement and the stop condition:
+
+- **One question per area, then move on.** When an answer opens a deeper thread, do not follow it. Note it and return to the surface.
+- **Options name alternatives, not resolutions.** The useful question here is often "which of these is the real fork?" — the answer tells you where the decisions live, not what they are.
+- **Depth is the failure mode.** Two questions running down the same thread means you have slipped back into the default.
+
+Stop when a further question would only deepen an area already surfaced, not reveal a new one. Then report the areas found, sorted into *sharp enough to decide now* versus *still too foggy to phrase*.
+
 ## When to stop
 
-Stop when the remaining questions no longer change what gets built. Then summarize the decisions and the open risks the interview surfaced.
+Depth-first: stop when the remaining questions no longer change what gets built. Breadth-first: stop per the rule above.
+
+Either way, finish by summarizing the decisions reached and the open risks the interview surfaced.

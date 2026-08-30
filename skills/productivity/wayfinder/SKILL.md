@@ -74,7 +74,7 @@ User invokes with a loose idea.
 
 1. **Name the destination.** Run `/project-reviewer` and `/domain-modeling` to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so it's settled first.
    _Done when_: the destination is one or two lines the user has agreed to.
-2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** — the way to the destination is already clear, the whole journey small enough for one session — you don't need a map. Stop and ask the user how they'd like to proceed.
+2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. Ask `/project-reviewer` for its breadth-first mode by name — its default is depth-first and will sink into the first thread it finds. **If this surfaces no fog** — the way to the destination is already clear, the whole journey small enough for one session — you don't need a map. Stop and ask the user how they'd like to proceed.
    _Done when_: every surfaced question is sorted into ticketable or still-foggy.
 3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as sub-issues of the map — then wire blocking edges in a **second pass**, since issues need ids before they can reference each other. Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog.
@@ -90,6 +90,7 @@ User invokes with a map (URL or number). A ticket is **optional** — without on
 3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/project-reviewer` and `/domain-modeling`.
    _Done when_: the ticket's question has an answer the user has agreed to (HITL) or the investigation is complete and written up (AFK).
 4. Record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
+   On a HITL ticket, carry anything the human typed into a question's **notes** or **Other** field into the answer **verbatim** rather than paraphrasing it — that free text is where the binding constraint usually arrives, and a later session cannot re-derive it. It is also where an out-of-scope signal most often shows up; see step 5.
 5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals a ticket — this one or another — sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
 
 The user may run unblocked tickets in parallel, so expect other sessions to be editing the tracker concurrently.
