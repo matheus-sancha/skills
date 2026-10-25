@@ -31,6 +31,18 @@ API paths **without** the leading slash — `gh api repos/$R/issues` — which w
 on every platform. (`MSYS_NO_PATHCONV=1` also works, but omitting the slash is
 one less thing to remember.)
 
+## Cloud sessions: REST only
+
+Some environments block GitHub's GraphQL API — claude.ai / Claude Code cloud
+sessions answer `HTTP 403: GitHub GraphQL is not available`. That breaks more
+than the frontier query: **every `gh issue …` subcommand uses GraphQL under the
+hood**, so `gh issue create/edit/view/comment/close/list` all fail there.
+
+Rule: if any `gh issue` or `gh api graphql` call returns that 403, switch to the
+REST commands in the **REST** blocks below for the rest of the session. They are
+verified against the live API and also work everywhere else, so using them
+from the start is always safe.
+
 ## Charting
 
 ```bash
@@ -54,10 +66,26 @@ gh api -X POST repos/$R/issues/<blocked-number>/dependencies/blocked_by \
 
 Labels must exist before use: `gh label create "wayfinder:map" --force`.
 
+**REST** (no GraphQL):
+
+```bash
+# Labels (422 = already exists, fine).
+gh api -X POST repos/$R/labels -f name="wayfinder:map" -f color=ededed
+
+# The map and its tickets. Body from a file with -F body=@file.md.
+MAP=$(gh api -X POST repos/$R/issues -f title="<destination-shaped title>" \
+  -F body=@map-body.md -f "labels[]=wayfinder:map" --jq .number)
+T=$(gh api -X POST repos/$R/issues -f title="<question-shaped title>" \
+  -F body=@ticket-body.md -f "labels[]=wayfinder:grilling" --jq .number)
+
+# Sub-issue and blocked-by wiring are already REST — use the commands above.
+```
+
+
 **Cap: 50 issues per relationship type.** A map needing more than 50 sub-issues
 is really two maps.
 
-## The frontier — one GraphQL query
+## The frontier — one GraphQL query (REST version below)
 
 Do **not** try to find the frontier with `gh search issues ... is:blocked`. The
 REST search API silently returns zero results for `is:blocked` and `is:blocking`
@@ -97,6 +125,24 @@ blocked tickets and what they wait on.
 
 `gh` has `jq` built in via `--jq`; a standalone `jq` binary may not be on PATH.
 
+
+### REST frontier (cloud sessions)
+
+Same three conditions, computed from two REST endpoints. Verified against a map
+whose only blocker was closed: the blocked ticket correctly appears.
+
+```bash
+for n in $(gh api "repos/$R/issues/<map-number>/sub_issues?per_page=50" \
+    --jq '.[] | select(.state=="open") | select((.assignees|length)==0) | .number'); do
+  open_blockers=$(gh api "repos/$R/issues/$n/dependencies/blocked_by?per_page=50" \
+    --jq '[.[] | select(.state=="open")] | length')
+  [ "$open_blockers" = "0" ] && gh api "repos/$R/issues/$n" --jq '"#\(.number) \(.title)"'
+done
+```
+
+Change `= "0"` to `!= "0"` to list the blocked tickets instead. It costs one
+call per open ticket — fine under the 50-sub-issue cap.
+
 ## Working a ticket
 
 ```bash
@@ -112,6 +158,16 @@ gh issue close -R $R <number>
 gh issue close -R $R <number> -c "Out of scope: <why>"
 ```
 
+**REST** (no GraphQL):
+
+```bash
+ME=$(gh api user --jq .login)
+gh api -X POST repos/$R/issues/<number>/assignees -f "assignees[]=$ME"   # claim
+gh api -X POST repos/$R/issues/<number>/comments -F body=@answer.md      # answer
+gh api -X PATCH repos/$R/issues/<number> -f state=closed                 # resolve
+gh api -X PATCH repos/$R/issues/<number> -f state=closed -f state_reason=not_planned  # out of scope
+```
+
 Closing a ticket unblocks everything it was blocking — verified: the newly
 unblocked ticket appears in the next frontier query with no further action.
 
@@ -120,6 +176,14 @@ unblocked ticket appears in the next frontier query with no further action.
 ```bash
 gh issue view -R $R <map-number>                    # the low-res view
 gh issue view -R $R <ticket-number> --comments      # zoom into one ticket
+```
+
+**REST** (no GraphQL):
+
+```bash
+gh api repos/$R/issues/<map-number> --jq '.title, .body'                 # the low-res view
+gh api repos/$R/issues/<ticket-number> --jq '.title, .body'              # zoom in…
+gh api repos/$R/issues/<ticket-number>/comments --jq '.[].body'          # …with comments
 ```
 
 Load the map body once per session. Zoom into individual tickets only on
