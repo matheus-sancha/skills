@@ -1,0 +1,24 @@
+{
+  "name": "matheus-skills",
+  "description": "Matheus Sancha's personal Agent Skills, grouped by category",
+  "owner": {
+    "name": "Matheus Sancha"
+  },
+  "plugins": [
+    {
+      "name": "ms-engineering",
+      "source": "./skills/engineering",
+      "description": "Design, diagnosis, review, testing, and Flutter skills"
+    },
+    {
+      "name": "ms-productivity",
+      "source": "./skills/productivity",
+      "description": "Planning, research, handoff, teaching, and skill-authoring skills"
+    },
+    {
+      "name": "ms-vendor",
+      "source": "./skills/vendor",
+      "description": "Third-party skills vendored from expo/skills and vercel-labs/skills"
+    }
+  ]
+}

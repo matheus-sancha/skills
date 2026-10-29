@@ -6,6 +6,39 @@ agent can do in your projects.
 
 ## Installing
 
+There are two install paths. They can be used together.
+
+### Every repo, cloud sessions, and mobile — via claude.ai
+
+This repo is a plugin marketplace (`.claude-plugin/marketplace.json`) with one
+plugin per category. Add it to your claude.ai account once and the skills sync
+into every Claude Code cloud session (any repo, started from web, desktop, or
+the mobile app), plus claude.ai chat and Cowork:
+
+1. Open [**Customize > Plugins**](https://claude.ai/customize/plugins) on
+   claude.ai (works in a mobile browser).
+2. **Add > Add marketplace**, enter `matheus-sancha/skills`.
+3. Add the plugins you want: `ms-engineering`, `ms-productivity`, `ms-vendor`.
+4. On the marketplace, turn on **Sync automatically** so every push to `main`
+   reaches your account without a manual **Check for updates**.
+
+Plugin skills are namespaced: `/ms-productivity:handoff`,
+`/ms-engineering:codebase-design`, and so on. The manifests set no `version`
+on purpose — each commit counts as a new version, so nothing needs bumping.
+
+Cloud sessions do **not** read `~/.claude/skills` or plugins declared in a
+repo's `.claude/settings.json`, which is why the claude.ai route is the one
+that reaches cloud sessions.
+
+From a local terminal, the same marketplace also installs directly:
+
+```bash
+claude plugin marketplace add matheus-sancha/skills
+claude plugin install ms-engineering@matheus-skills
+```
+
+### Local machine — via symlinks
+
 ```bash
 git clone https://github.com/matheus-sancha/skills
 cd skills
@@ -32,6 +65,10 @@ immediately and `git pull` needs no re-installation.
 The Windows script needs **Developer Mode** on (Settings → System → For
 developers) so it can create symlinks without an elevated shell. Without it,
 it falls back to directory junctions, which work the same for local paths.
+
+If you use both routes on the same machine, each skill appears twice (once
+bare, once namespaced). They are the same files, so either works; disable the
+`ms-*` plugins locally with `/plugin` if the duplicates bother you.
 
 ## Available skills
 
@@ -90,8 +127,11 @@ Everything under `skills/` is installed as a live skill. Anything that should
 
 ```
 skills/
+├── .claude-plugin/
+│   └── marketplace.json      ← lists the three plugins below
 ├── skills/
-│   ├── engineering/
+│   ├── engineering/          ← plugin ms-engineering
+│   │   ├── .claude-plugin/plugin.json
 │   │   ├── codebase-design/
 │   │   ├── context-map/
 │   │   ├── diagnosing-bugs/
@@ -102,7 +142,8 @@ skills/
 │   │   ├── prototype/
 │   │   ├── review-changes/
 │   │   └── test-strategy/
-│   ├── productivity/
+│   ├── productivity/         ← plugin ms-productivity
+│   │   ├── .claude-plugin/plugin.json
 │   │   ├── handoff/
 │   │   ├── project-reviewer/
 │   │   ├── research/
@@ -110,7 +151,8 @@ skills/
 │   │   ├── skill-creator/
 │   │   ├── teach/
 │   │   └── wayfinder/
-│   └── vendor/               ← third-party, minimally edited
+│   └── vendor/               ← plugin ms-vendor; third-party, minimally edited
+│       ├── .claude-plugin/plugin.json
 │       ├── building-native-ui/
 │       └── find-skills/
 ├── templates/
