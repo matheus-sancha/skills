@@ -1,0 +1,9 @@
+{
+  "name": "ms-vendor",
+  "description": "Third-party skills vendored from expo/skills and vercel-labs/skills",
+  "author": {
+    "name": "Matheus Sancha"
+  },
+  "repository": "https://github.com/matheus-sancha/skills",
+  "skills": ["./"]
+}
