@@ -77,7 +77,7 @@ def _arc(path, cx, cy, r, a0, a1):
         ts, te = math.radians(s), math.radians(e)
         c1 = (p0[0] - k * r * math.sin(ts), p0[1] - k * r * math.cos(ts))
         c2 = (p3[0] + k * r * math.sin(te), p3[1] + k * r * math.cos(te))
-        path.cubicTo(c1, c2, p3)
+        path.cubicTo(*c1, *c2, *p3)  # pathops wants 6 flat floats, not 3 tuples
 
 
 class Mark:

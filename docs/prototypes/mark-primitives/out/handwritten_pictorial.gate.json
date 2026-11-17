@@ -1,0 +1,32 @@
+[
+ {
+  "check": "min stroke @16px",
+  "value": "2.00 px",
+  "pass": true
+ },
+ {
+  "check": "min gap/counter @16px",
+  "value": "1.00 px",
+  "pass": true
+ },
+ {
+  "check": "extrema nodes (rule 7)",
+  "value": "0 missing / 19 segs, 2 native arcs",
+  "pass": true
+ },
+ {
+  "check": "SSIM 16 vs 256->16",
+  "value": "0.998",
+  "pass": true
+ },
+ {
+  "check": "mono distinct (rule 17)",
+  "value": "2 colours, min sep 2.25 px@32; parts/holes 2/0 @512 -> 2/0 @32 -> 2/0 @16",
+  "pass": true
+ },
+ {
+  "check": "centroid vs bbox (info)",
+  "value": "7.0 % of box (dx +6.1, dy +3.5)",
+  "pass": null
+ }
+]

@@ -1,0 +1,47 @@
+{
+ "mark": "letterform_r2",
+ "box": 100.0,
+ "note": "H from three tiles; crossbar is the lit tile",
+ "log": [
+  {
+   "id": "s1",
+   "op": "rounded_rect",
+   "x": 8.333333333333334,
+   "y": 9.333333333333334,
+   "w": 19,
+   "h": 81.33333333333334,
+   "r": 5
+  },
+  {
+   "id": "s2",
+   "op": "mirror",
+   "input": "s1",
+   "axis": "x",
+   "about": 50.0
+  },
+  {
+   "op": "param",
+   "name": "sun_r",
+   "value": 15.667,
+   "why": "fills the counter minus both joints"
+  },
+  {
+   "id": "s3",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 58,
+   "r_in": 0,
+   "r_out": 15.667,
+   "a0": 0,
+   "a1": 180
+  },
+  {
+   "id": "s4",
+   "op": "union",
+   "inputs": [
+    "s1",
+    "s2"
+   ]
+  }
+ ]
+}
