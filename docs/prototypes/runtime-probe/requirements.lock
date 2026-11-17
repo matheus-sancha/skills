@@ -1,0 +1,18 @@
+# Pinned stack for the brand-identity skill's runtime probe.
+# Versions are the ones verified in docs/research/svg-tooling.md (Claude Code cloud, Python 3.13).
+# numpy and scipy dropped Python 3.11 in the newest releases, so those two are split by marker
+# (the Claude API sandbox is documented as Python 3.11; claude.ai/Cowork versions are unverified).
+# Every package installs as a prebuilt wheel; no compiler or system libraries needed.
+skia-pathops==0.9.2
+fonttools==4.68.0
+uharfbuzz==0.57.0
+brotli==1.2.1
+resvg-py==0.5.0
+shapely==2.2.0
+svgpathtools==1.8.0
+numpy==2.5.5; python_version >= "3.12"
+numpy==2.4.6; python_version < "3.12"
+scipy==1.18.1; python_version >= "3.12"
+scipy==1.17.1; python_version < "3.12"
+scikit-image==0.26.0
+pillow==13.0.0
