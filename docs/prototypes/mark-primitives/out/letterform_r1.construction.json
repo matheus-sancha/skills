@@ -1,0 +1,52 @@
+{
+ "mark": "letterform_r1",
+ "box": 100.0,
+ "note": "H from three tiles; crossbar is the lit tile",
+ "log": [
+  {
+   "id": "s1",
+   "op": "rounded_rect",
+   "x": 10.333333333333334,
+   "y": 9.333333333333334,
+   "w": 22,
+   "h": 81.33333333333334,
+   "r": 4
+  },
+  {
+   "id": "s2",
+   "op": "mirror",
+   "input": "s1",
+   "axis": "x",
+   "about": 50.0
+  },
+  {
+   "op": "param",
+   "name": "bar_h",
+   "value": 20.46,
+   "why": "rule 3 stroke compensation"
+  },
+  {
+   "op": "param",
+   "name": "bar_cy",
+   "value": 48.0,
+   "why": "crossbar raised above centre"
+  },
+  {
+   "id": "s3",
+   "op": "rounded_rect",
+   "x": 36.333333333333336,
+   "y": 37.769999999999996,
+   "w": 27.33333333333333,
+   "h": 20.46,
+   "r": 4
+  },
+  {
+   "id": "s4",
+   "op": "union",
+   "inputs": [
+    "s1",
+    "s2"
+   ]
+  }
+ ]
+}

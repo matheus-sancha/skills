@@ -1,0 +1,18 @@
+# Pinned by: pip install --only-binary=:all: -r requirements.lock (Python 3.13.18, linux x86_64, 2026-11-17)
+brotli==1.2.1
+fonttools==4.68.0
+ImageIO==2.38.2
+lazy-loader==0.6
+networkx==3.7
+numpy==2.5.5
+packaging==26.3
+pillow==13.0.0
+resvg_py==0.5.0
+scikit-image==0.26.0
+scipy==1.18.1
+shapely==2.2.0
+skia-pathops==0.9.2
+svgpathtools==1.8.0
+svgwrite==1.4.3
+tifffile==2026.11.12
+uharfbuzz==0.57.0

@@ -1,0 +1,166 @@
+{
+ "mark": "pictorial_r1",
+ "box": 100.0,
+ "note": "sun behind roof chevron",
+ "log": [
+  {
+   "id": "s1",
+   "op": "stroke",
+   "points": [
+    [
+     10.333333333333334,
+     80
+    ],
+    [
+     50.0,
+     46
+    ],
+    [
+     89.66666666666667,
+     80
+    ]
+   ],
+   "width": 12,
+   "cap": "butt",
+   "join": "miter",
+   "miter_limit": 10,
+   "closed": false
+  },
+  {
+   "id": "s2",
+   "op": "polygon",
+   "points": [
+    [
+     0,
+     80
+    ],
+    [
+     50.0,
+     46
+    ],
+    [
+     100.0,
+     80
+    ],
+    [
+     100.0,
+     100.0
+    ],
+    [
+     0,
+     100.0
+    ]
+   ]
+  },
+  {
+   "id": "s3",
+   "op": "stroke",
+   "points": [
+    [
+     10.333333333333334,
+     80
+    ],
+    [
+     50.0,
+     46
+    ],
+    [
+     89.66666666666667,
+     80
+    ]
+   ],
+   "width": 22,
+   "cap": "square",
+   "join": "miter",
+   "miter_limit": 10,
+   "closed": false
+  },
+  {
+   "id": "s4",
+   "op": "circle",
+   "cx": 50.0,
+   "cy": 50,
+   "r": 27
+  },
+  {
+   "id": "s5",
+   "op": "difference",
+   "inputs": [
+    "s4",
+    "s2",
+    "s3"
+   ]
+  },
+  {
+   "id": "s6",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 50,
+   "r_in": 36,
+   "r_out": 44,
+   "a0": 86.0,
+   "a1": 94.0
+  },
+  {
+   "id": "s7",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 50,
+   "r_in": 36,
+   "r_out": 44,
+   "a0": 41.0,
+   "a1": 49.0
+  },
+  {
+   "id": "s8",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 50,
+   "r_in": 36,
+   "r_out": 44,
+   "a0": 131.0,
+   "a1": 139.0
+  },
+  {
+   "id": "s9",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 50,
+   "r_in": 36,
+   "r_out": 44,
+   "a0": 11.0,
+   "a1": 19.0
+  },
+  {
+   "id": "s10",
+   "op": "annulus_segment",
+   "cx": 50.0,
+   "cy": 50,
+   "r_in": 36,
+   "r_out": 44,
+   "a0": 161.0,
+   "a1": 169.0
+  },
+  {
+   "id": "s11",
+   "op": "union",
+   "inputs": [
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10"
+   ]
+  },
+  {
+   "id": "s12",
+   "op": "difference",
+   "inputs": [
+    "s11",
+    "s3",
+    "s2"
+   ]
+  }
+ ]
+}

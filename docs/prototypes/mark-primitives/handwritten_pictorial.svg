@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Hand-written, no library: route B "sun behind roof", same brief as recipe_pictorial r3:
+       off-centre morning sun behind the right slope, 7-unit gap, flat eaves, two colours. -->
+  <defs>
+    <mask id="behind-roof">
+      <rect width="100" height="100" fill="#ffffff"/>
+      <!-- everything under the roof line, and the roof grown by the gap, hides the sun -->
+      <polygon points="0,82 50,50 100,82 100,100 0,100" fill="#000000"/>
+      <polyline points="6,85 50,50 94,85" fill="none" stroke="#000000" stroke-width="27" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    </mask>
+    <clipPath id="eaves">
+      <rect width="100" height="82"/>
+    </clipPath>
+  </defs>
+  <circle cx="64" cy="40" r="19" fill="#f0a531" mask="url(#behind-roof)"/>
+  <polyline points="6,85 50,50 94,85" fill="none" stroke="#1e2b3a" stroke-width="13" stroke-linejoin="miter" stroke-miterlimit="10" clip-path="url(#eaves)"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "name": "ms-design",
+  "description": "Brand identity and design-system skills",
+  "author": {
+    "name": "Matheus Sancha"
+  },
+  "repository": "https://github.com/matheus-sancha/skills",
+  "skills": ["./"]
+}
