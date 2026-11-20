@@ -41,6 +41,24 @@ ColorScheme _scheme(Brightness b) => ColorScheme.fromSeed(
 );
 ```
 
+### Brand-supplied scheme (when the project has brand tokens)
+
+The default `fromSeed` uses `DynamicSchemeVariant.tonalSpot`, which caps chroma and turns a vivid brand colour into a pastel. When the project already has brand tokens (for example `brand_tokens.dart` or `tokens.dtcg.json` from the `brand-identity` skill), keep the brand hex exact instead:
+
+```dart
+ColorScheme _scheme(Brightness b) => ColorScheme.fromSeed(
+  seedColor: BrandColors.seed,
+  brightness: b,
+  dynamicSchemeVariant: DynamicSchemeVariant.fidelity, // keeps the seed's chroma
+  // override every role the brand fixes; fromSeed fills the rest consistently
+  primary: BrandColors.primaryLight,
+  onPrimary: b == Brightness.light ? BrandColors.onPrimaryLight : BrandColors.onPrimaryDark,
+  primaryContainer: b == Brightness.light ? BrandColors.primaryContainerLight : BrandColors.primaryContainerDark,
+);
+```
+
+Map the brand file's spacing, radius and motion onto `Space`, `Radii` and `Motion` (§1) by value; don't invent new steps. The `brand-identity` skill already emits a ready `brandScheme(Brightness)` in `brand_tokens.dart`. Use it as is. Without brand tokens, keep the plain `fromSeed` above.
+
 Semantic colours (success/warning/error) live beside the scheme as named tokens, not scattered literals. Map `error` to the scheme's `error`; define success/warning yourself once.
 
 ```dart

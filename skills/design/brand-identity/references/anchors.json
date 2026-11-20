@@ -1,0 +1,128 @@
+{
+  "_note": "Anchor sets approved by Matheus on issue 28 (2026-11-20). Logos are never bundled: this file holds names and owner sources only. fetch_anchors.py caches the SVGs into cache/ (git-ignored), pinned by sha256. kind: url = direct SVG file; inline = an <svg> in the owner's own page, picked by a regex on its opening tag; sprite = a <symbol id> inside the owner's SVG sprite; zip = a member of an official zip.",
+  "sets": {
+    "letterform": [
+      {
+        "name": "V&A",
+        "kind": "sprite",
+        "url": "https://www.vam.ac.uk/",
+        "sprite_re": "/assets/vam-sprite-[0-9a-f]+\\.svg",
+        "symbol": "valogo-clipped"
+      },
+      {
+        "name": "Pinterest P",
+        "kind": "inline",
+        "url": "https://www.pinterest.com/",
+        "tag_re": "<svg[^>]*aria-label=\"Pinterest\"[^>]*viewBox=\"0 0 24 24\""
+      },
+      {
+        "name": "Netflix N",
+        "kind": "inline",
+        "url": "https://www.netflix.com/",
+        "tag_re": "<svg[^>]*class=\"n-logo-svg\""
+      },
+      {
+        "name": "Mastodon",
+        "kind": "url",
+        "url": "https://joinmastodon.org/logos/logo-black.svg"
+      },
+      {
+        "name": "Mozilla symbol (2024)",
+        "kind": "url",
+        "url": "https://www.mozilla.org/media/img/logos/m24/symbol-white.05fe537b39ce.svg",
+        "recolour": "#000000"
+      }
+    ],
+    "pictorial": [
+      {
+        "name": "WWF panda",
+        "kind": "url",
+        "url": "https://www.wwf.org.uk/themes/custom/wwf/img/wwf-logo.svg"
+      },
+      {
+        "name": "Apple",
+        "kind": "inline",
+        "url": "https://www.apple.com/",
+        "tag_re": "<svg height=\"44\" viewBox=\"0 0 14 44\""
+      },
+      {
+        "name": "Mailchimp Freddie",
+        "kind": "url",
+        "url": "https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/dotcom/oneintuit2026-logos-mc-dotcom-inapp/iconLeading_mailchimp.svg"
+      },
+      {
+        "name": "Bluesky butterfly",
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/bluesky-social/social-app/main/bskyembed/assets/logo.svg"
+      }
+    ],
+    "abstract": [
+      {
+        "name": "Deutsche Bank",
+        "kind": "url",
+        "url": "https://prod2.master.dwebcms.db.com/application/themes/default/favicon/safari-pinned-tab.svg"
+      },
+      {
+        "name": "Airbnb Bélo",
+        "kind": "url",
+        "url": "https://a0.muscache.com/pictures/airbnb-platform-assets/AirbnbPlatformAssets-Favicons/original/304e8c59-05df-4fab-9846-f69fd7f749b0.svg"
+      },
+      {
+        "name": "Slack",
+        "kind": "url",
+        "url": "https://a.slack-edge.com/1f40066/marketing/img/nav/logo.svg"
+      },
+      {
+        "name": "BP Helios",
+        "kind": "inline",
+        "url": "https://www.bp.com/",
+        "tag_re": "<svg[^>]*viewBox=\"0 0 34 34\"[^>]*data-testid=\"bp-logo-helios\""
+      },
+      {
+        "name": "Dropbox",
+        "kind": "url",
+        "url": "https://fjord.dropboxstatic.com/warp/conversion/dropbox/warp/icons/Dropbox-logo-nav.svg"
+      },
+      {
+        "name": "Kubernetes",
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/icon/color/kubernetes-icon-color.svg"
+      }
+    ],
+    "wordmark": [
+      {
+        "name": "Coca-Cola",
+        "kind": "url",
+        "url": "https://www.coca-cola.com/content/dam/onexp/br/pt/offerings/christmas/Coca-Cola-original-logo-co.svg"
+      },
+      {
+        "name": "Netflix",
+        "kind": "page_link",
+        "url": "https://www.netflix.com/",
+        "link_re": "https://occ\\.a\\.nflxso\\.net/[^\"]+\\.svg",
+        "content_re": "viewBox=\"0 0 370 100\""
+      },
+      {
+        "name": "Google",
+        "kind": "url",
+        "url": "https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+      },
+      {
+        "name": "Mozilla wordmark (2024)",
+        "kind": "url",
+        "url": "https://www.mozilla.org/media/img/logos/m24/wordmark-white.2d673bb5b33a.svg",
+        "recolour": "#000000"
+      },
+      {
+        "name": "Vogue",
+        "kind": "url",
+        "url": "https://www.vogue.com/verso/static/vogue-global/assets/us/logo.svg"
+      },
+      {
+        "name": "The New Yorker",
+        "kind": "url",
+        "url": "https://www.newyorker.com/verso/static/thenewyorker-us/assets/logo.svg"
+      }
+    ]
+  }
+}

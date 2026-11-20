@@ -6,6 +6,11 @@
   },
   "plugins": [
     {
+      "name": "ms-design",
+      "source": "./skills/design",
+      "description": "Brand identity: logo systems, identity kits and UI design systems"
+    },
+    {
       "name": "ms-engineering",
       "source": "./skills/engineering",
       "description": "Design, diagnosis, review, testing, and Flutter skills"
