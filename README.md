@@ -18,7 +18,7 @@ the mobile app), plus claude.ai chat and Cowork:
 1. Open [**Customize > Plugins**](https://claude.ai/customize/plugins) on
    claude.ai (works in a mobile browser).
 2. **Add > Add marketplace**, enter `matheus-sancha/skills`.
-3. Add the plugins you want: `ms-engineering`, `ms-productivity`, `ms-vendor`.
+3. Add the plugins you want: `ms-design`, `ms-engineering`, `ms-productivity`, `ms-vendor`.
 4. On the marketplace, turn on **Sync automatically** so every push to `main`
    reaches your account without a manual **Check for updates**.
 
@@ -75,6 +75,18 @@ bare, once namespaced). They are the same files, so either works; disable the
 `slash-only` skills fire only when you type `/<name>`; the rest can also be
 invoked by the model when the context matches.
 
+### Design
+
+| Skill | Description |
+|---|---|
+| [brand-identity](./skills/design/brand-identity/) | Design a brand identity the way a studio does: strategy brief, reaction boards, gated logo routes, a full logo system, colour, type, graphic language, and a UI design system delivered as a kit. Also audits or refreshes an existing logo |
+
+`brand-identity` runs Python scripts (geometry, rendering, checks) from a venv it
+creates on first use. Claude Code works out of the box; claude.ai and Cowork need
+package-manager network access turned on. It bundles six OFL fonts and can fetch
+any Google Fonts family. The design decisions behind it are in
+[issue #5](https://github.com/matheus-sancha/skills/issues/5) and `docs/research/`.
+
 ### Engineering
 
 | Skill | Description |
@@ -128,8 +140,11 @@ Everything under `skills/` is installed as a live skill. Anything that should
 ```
 skills/
 ├── .claude-plugin/
-│   └── marketplace.json      ← lists the three plugins below
+│   └── marketplace.json      ← lists the four plugins below
 ├── skills/
+│   ├── design/               ← plugin ms-design
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── brand-identity/   ← SKILL.md, references/, scripts/ (Python + bundled fonts)
 │   ├── engineering/          ← plugin ms-engineering
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── codebase-design/
@@ -165,7 +180,9 @@ skills/
 │   └── validate.sh           ← validate all SKILL.md files
 ├── docs/
 │   ├── authoring-guide.md
-│   └── trigger-writing-tips.md
+│   ├── trigger-writing-tips.md
+│   ├── research/             ← cited research notes behind brand-identity
+│   └── prototypes/           ← throwaway prototypes that settled its design
 └── .github/workflows/
     └── validate.yml
 ```
